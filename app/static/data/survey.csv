@@ -1,0 +1,16 @@
+name,class,work_well,not_work_well
+Søren,2a,"Laura, Liv",Freya
+Alice,1a,"Bob, Cindy, Ethan","Frank, Grace, Hannah"
+Bob,1a,"Alice, Cindy, David","Grace, Hannah, Ethan"
+Cindy,1a,"Alice, Bob, David","Ethan, Frank, Grace"
+David,1a,"Bob, Cindy, Ethan","Grace, Hannah, Frank"
+Ethan,1a,"Alice, Cindy, Hannah","Frank, Grace"
+Frank,1a,"Alice, David, Hannah","Cindy, Ethan, Grace"
+Grace,1a,"Bob, David, Frank","Alice, Cindy, Hannah"
+Hannah,1a,"Alice, Ethan, Frank","Bob, Cindy, Grace"
+Isaac,1a,"Cindy, Ethan, Grace","Alice, David, Frank"
+Jake,1a,"Alice, Bob, David","Cindy, Ethan, Grace"
+Liv,2a,Freya,Søren
+Freya,2a,"Liv, Laura",Søren
+yolo ,3a,fuck,shit
+fuck,3a,yolo,shit

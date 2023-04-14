@@ -1,0 +1,33 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+  <div class="login-container">
+    <h3>Login to see the sociogram</h3>
+    <form id="login-form" method="post" action="{{ url_for('test_bp.login') }}">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br><br>
+      <button type="submit">Login</button>
+      <button onclick="returnToConnected();" class="return-btn">Return to connected</button>
+    </form>
+  </div>
+  <script>
+    function returnToConnected() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "{{ url_for('test_bp.index') }}";
+      }
+    }
+  </script>
+</body>
+</html>

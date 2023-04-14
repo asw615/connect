@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Protect</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/fevicon.png') }}" type="image/gif">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mCustomScrollbar.min.css') }}">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+<body>
+    <!--header section start -->
+    <div class="header_section">
+        <div class="container-fluid">
+            <div class="main">
+                <div class="logo"><a href="{{ url_for('test_bp.index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}"></a></div>
+                <div class="menu_text">
+                    <ul>
+                        <div class="togle_">
+                            <div class="menu_main">
+                                <ul>
+                                    <li><a href="{{ url_for('test_bp.login') }}">Login</a></li>
+                                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="myNav" class="overlay">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            <div class="overlay-content">
+                                <a href="{{ url_for('test_bp.index') }}">Home</a>
+                                <a href="{{ url_for('test_bp.test') }}">Take the test</a>
+                                <a href="{{ url_for('test_bp.sociogram') }}">Show test results</a>
+                                <a href="{{ url_for('test_bp.science') }}">How do we assess learning profiles?</a>
+                                <a href="{{ url_for('test_bp.about') }}">About us</a>
+                            </div>
+                        </div>
+                        <span class="navbar-toggler-icon"></span>
+                        <span onclick="openNav()"><img src="{{ url_for('static', filename='images/toogle-icon.png') }}" class="toggle_menu"></span>
+                        <span onclick="openNav()"><img src="{{ url_for('static', filename='images/toogle-icon1.png') }}" class="toggle_menu_1"></span>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+            <!-- banner section start -->
+            <div class="container">
+               <div class="about_taital_main">
+                  <h2 class="about_tag">This is here you take your test</h2>
+               </div>
+            </div>
+         <!-- banner section end -->
+      </div>
+      <!-- header section end -->
+      <!-- protect section start -->
+      <div class="protect_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <h1 class="protect_taital">TEST SHOULD BE HERE</h1>
+                  <p class="protect_text">English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- protect section end -->
+   
+      <!-- copyright section start -->
+      <div class="copyright_section">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <p class="copyright_text">© 2020 All Rights Reserved.<a href="https://html.design"> Free  html Templates</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- copyright section end -->
+<!-- Javascript files-->
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-3.0.0.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/plugin.js') }}"></script>
+<!-- sidebar -->
+<script src="{{ url_for('static', filename='js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+<!-- javascript --> 
+<script src="{{ url_for('static', filename='js/owl.carousel.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+              
+         $(".zoom").hover(function(){
+              
+         $(this).addClass('transition');
+         }, function(){
+              
+         $(this).removeClass('transition');
+         });
+         });
+      </script> 
+      <script>
+         function openNav() {
+         document.getElementById("myNav").style.width = "100%";
+         }
+         function closeNav() {
+         document.getElementById("myNav").style.width = "0%";
+         }
+      </script>  
+   </body>
+</html>
