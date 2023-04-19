@@ -1,5 +1,7 @@
 import igraph as ig
 import csv
+import cairocffi as cairo
+
 
 def create_sociogram(class_name):
     with open('app/static/data/survey.csv', newline='', encoding='utf-8') as csvfile:
@@ -9,7 +11,7 @@ def create_sociogram(class_name):
     G = ig.Graph()
 
     for row in rows:
-        G.add_vertex(row['name'])
+        G.add_vertex(row['name'], gender=row['gender'])
 
     node_names = G.vs["name"]
 
@@ -63,16 +65,56 @@ def create_sociogram(class_name):
         elif edge["color"] == "slateblue1":
             edge_widths[e] = 3
 
+    # Define vertex shapes and labels
+    shapes = {
+        'Male': 'square',
+        'Female': 'circle',
+        'Other': 'triangle'
+    }
+    vertex_shapes = [shapes[gender] for gender in G.vs['gender']]
+    vertex_labels = [None] * len(G.vs)
+    for i, name in enumerate(G.vs["name"]):
+        vertex_labels[i] = name
+
     # Visualize the graph
     visual_style = {}
     visual_style["vertex_size"] = 70
-    visual_style["vertex_color"] = "lightblue"
-    visual_style["vertex_label"] = G.vs["name"]
+    visual_style["vertex_shape"] = vertex_shapes
+    visual_style["vertex_label"] = vertex_labels
+    visual_style["vertex_label_color"] = "white"
+    visual_style["vertex_label_size"] = 15
+    visual_style["vertex_label_dist"] = 1
+    visual_style["vertex_label_angle"] = -45
     visual_style["edge_color"] = G.es["color"]
     visual_style["layout"] = G.layout_fruchterman_reingold()
     visual_style["bbox"] = (1000, 1000)
     visual_style["margin"] = 50
     visual_style["edge_width"] = edge_widths
 
-    plot = ig.plot(G, **visual_style)
+    # Load images
+    male_image = cairo.ImageSurface.create_from_png("app/static/images/male.png")
+    female_image = cairo.ImageSurface.create_from_png("app/static/images/female.png")
+    other_image = cairo.ImageSurface.create_from_png("app/static/images/other.png")
+    
+    def draw_vertex_images(context, vertices, drawer):
+        for vertex in vertices:
+            x, y = vertex['x'], vertex['y']
+            image = images[G.vs[vertex.index]['gender']]
+            w, h = image.get_width(), image.get_height()
+            context.save()
+            context.translate(x - w / 2, y - h / 2)
+            context.set_source_surface(image)
+            context.paint()
+            context.restore()
+    images = {
+        'Male': male_image,
+        'Female': female_image,
+        'Other': other_image
+    }
+    vertex_images = [images[gender] for gender in G.vs['gender']]
+    visual_style["vertex_shape"] = vertex_images
+
+    plot = ig.plot(G, **visual_style, mark_groups=None, drawer_factory=ig.drawing.CairoCffiDrawer)
+    plot.redraw(draw_vertex_images)
     plot.save("sociogram.png")
+

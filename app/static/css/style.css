@@ -347,6 +347,13 @@ menu_text {
     background-color: #87cefa;
 }
 
+.banner_section_test {
+    width: 100%;
+    float: left;
+    padding-bottom: 80px;
+    background-color: #87cefa;
+}
+
 .banner_img {
     width: 80%;
     color: #fef6fc;
@@ -359,9 +366,29 @@ menu_text {
     font-size: 60px;
     color: #000;
     font-weight: bold;
-    line-height: 50px;
+    line-height: 70px;
     padding-top: 30px;
 }
+
+.banner_taital_test {
+    width: 100%;
+    font-size: 60px;
+    color: #000;
+    font-weight: bold;
+    line-height: 70px; /* Increase the line-height value */
+    padding-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .banner_text_test {
+    max-width: 80%;
+    font-size: 16px;
+    color: #000;
+    margin: 20px 0px 0px 0px;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 .banner_text {
     width: 80%;
@@ -465,7 +492,7 @@ menu_text {
 
 .hands_text {
     width: 61%;
-    font-size: 30px;
+    font-size: 20px;
     color: #081419;
     text-align: center;
     font-weight: bold;
@@ -492,7 +519,7 @@ menu_text {
 
 .hands_text_2 {
     width: 50%;
-    font-size: 30px;
+    font-size: 20px;
     color: #081419;
     text-align: center;
     font-weight: bold;
@@ -1076,4 +1103,65 @@ label {
   button:hover {
     background-color: #3674f2;
   }
+  
+
+/* questionnaire site */
+  .full-width-text {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  @media (min-width: 768px) {
+    .full-width-text {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .full-width-text {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  }
+  .survey-button {
+    font-family: Helvetica, Arial, sans-serif;
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #a258ed;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 40px;
+    padding: 10px 33px;
+    font-weight: bold;
+    height: 50px;
+    cursor: pointer;
+    line-height: 30px;
+    text-align: center;
+    margin: 30px 0;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.survey-button:hover {
+    color: #ffffff;
+    background-color: #3674f2;
+}
+
+
+.content_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000; /* Adjust the border style as needed */
+    padding: 30px; /* Adjust the padding as needed */
+    background-color: #F0F8FF; /* Updated background color */
+    border-radius: 15px; /* Add this line for rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add this line for a drop shadow */
+  }
+  
   

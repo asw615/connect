@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Protect</title>
+    <title>Classroom Sociogram Questionnaire</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -57,23 +57,29 @@
     </div>
     <!--header section end -->
 
-            <div class="container">
-               <div class="about_taital_main">
-                  <h2 class="about_tag">This is here you take your test</h2>
-               </div>
-            </div>
+    <div class="banner_section layout_padding">
+      <div class="container">
+        <div class="row">
+          <div class="full-width-text" style="text-align: center;">
+            <h1 class="banner_taital_test">Help your teacher get a birds-eye view over your classroom and answer the questionnaire</h1>
+            <p class="banner_text_test">Sociograms are a powerful tool that can help educators better understand the social dynamics in their classroom. By analyzing the relationships between students, educators can create collaborative learning environments that maximize student potential.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
          <!-- banner section end -->
       </div>
       <!-- header section end -->
-     <!-- Survey section start -->
+<!-- Survey section start -->
 <div class="protect_section layout_padding">
-   <div class="container">
-     <div class="row">
-       <div class="col-sm-12">
-         <div style="text-align:center">
-           <h1 class="protect_taital">TEST SHOULD BE HERE</h1>
-           <div id="surveyContainer"></div>
-           <button id="surveyButton" style="all:unset;font-family:Helvetica,Arial,sans-serif;display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background-color:#0445AF;color:#fff;font-size:20px;border-radius:25px;padding:0 33px;font-weight:bold;height:50px;cursor:pointer;line-height:50px;text-align:center;margin:0;text-decoration:none;">Take Survey</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="survey-container" style="text-align: center; max-width: 600px; margin: auto; background-color: #F0F8FF; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);">
+          <h2 style="font-size: 24px; margin-bottom: 20px;">Take the Questionnaire</h2>
+          <p style="font-size: 18px; margin-bottom: 30px;">Click the button below to start the questionnaire and help your teacher gain insights into your classroom's social dynamics.</p>
+          <button class="survey-button" id="surveyButton">Take questionnaire</button>
            <style>
              .blur {
                filter: blur(5px);
@@ -138,7 +144,6 @@
              <button id="surveyIframeCloseButton" style="background-image: url('{{ url_for('static', filename='images/close.png') }}'); background-size: contain; background-repeat: no-repeat; width: 50px; height: 50px; border: none; cursor: pointer; position: absolute; top: 10px; right: 10px; background-color: transparent;"></button>
              <iframe id="surveyIframe"></iframe>
            </div>
-           <p class="protect_text">Some text about the survey</p>
          </div>
        </div>
       <div class="blur-background"></div>

@@ -82,5 +82,3 @@ def sociogram_image():
     else:
         return "Please provide a class name to filter the sociogram.", 400
 
-# Register the survey blueprint
-test_bp.register_blueprint(survey_blueprint)

@@ -8,7 +8,7 @@ template = """
 <!DOCTYPE html>
 <html>
 <head>
-        <!-- style css -->
+    <!-- style css -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Survey Form</title>
     <style>
@@ -50,6 +50,15 @@ template = """
       border-radius: 5px;
     }
 
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
     input[type="submit"] {
         background-color: #a258ed;
         color: #fff;
@@ -72,6 +81,12 @@ template = """
         <input type="text" id="name" name="name" required>
         <label for="class">Class:</label>
         <input type="text" id="class" name="class" required>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
         <label for="work_well">Who do you work well with? (first names, separated by a comma e.g. Søren, Laura, Liv, Freya)</label>
         <input type="text" id="work_well" name="work_well" required>
         <label for="not_work_well">Who do you not work well with? (first names, seperated by a comma e.g. Søren, Laura, Liv, Freya)</label>
@@ -85,10 +100,11 @@ template = """
 @survey_blueprint.route("/survey", methods=["GET", "POST"])
 def survey_form():
     csv_file = "app/static/data/survey.csv"
-
+    
     if request.method == "POST":
         name = request.form["name"]
         class_ = request.form["class"]
+        gender = request.form["gender"]
         work_well = request.form["work_well"]
         not_work_well = request.form["not_work_well"]
 
@@ -101,13 +117,14 @@ def survey_form():
         records.append({
             "name": name,
             "class": class_,
+            "gender": gender,
             "work_well": work_well,
             "not_work_well": not_work_well,
         })
 
         # Write the new data to the CSV file
         with open(csv_file, mode="w", newline="") as csvfile:
-            fieldnames = ["name", "class", "work_well", "not_work_well"]
+            fieldnames = ["name", "class", "gender", "work_well", "not_work_well"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(records)
@@ -116,7 +133,3 @@ def survey_form():
 
     else:
         return render_template_string(template, survey_endpoint=request.url_root + "survey")
-
-
-
-           

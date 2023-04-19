@@ -21,6 +21,7 @@
 
 </head>
 <body>
+  <div class="page-wrapper">
     <!--header section start -->
     <div class="header_section">
         <div class="container-fluid">
@@ -51,145 +52,188 @@
                         </div>
                         <span class="navbar-toggler-icon"></span>
                         <span onclick="openNav()"><img src="{{ url_for('static', filename='images/toogle-icon.png') }}" class="toggle_menu"></span>
-                        <span onclick="openNav()"><img src="{{ url_for('static', filename='images/toogle-icon1.png') }}" class="toggle_menu_1"></span>
-                    </ul>
+                        <span onclick="openNav()"><
+                            <img src="{{ url_for('static', filename='images/toogle-icon1.png') }}" class="toggle_menu_1"></span>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--sociogram section start -->
-    <body style="display: flex; justify-content: center; align-items: center; height: 100%;">
-      <div id="main-container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
-        <div id="sociogram-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-          <div style="display: flex; justify-content: center;">
-            <div style="display: flex; align-items: center;">
-               <img id="sociogram-image" class="sociogram-image">
-              <div class="color-indications-container">
-                <div id="color-indications" style="display: flex; flex-direction: column;">
-                  <p><span class="color-indication" style="background-color: #80ff79;"></span> <span style="margin-left: 5px;">Works well with each other</span></p>
-                  <p><span class="color-indication" style="background-color: #354aff;"></span> <span style="margin-left: 5px;">Works well with one side</span></p>
-                  <p><span class="color-indication" style="background-color: #ffae26;"></span> <span style="margin-left: 5px;">Does not work well with one side</span></p>
-                  <p><span class="color-indication" style="background-color: red;"></span> <span style="margin-left: 5px;">Does not work well with each other</span></p>
+        <!--sociogram section start -->
+        <div id="main-container">
+            <div id="form-container" style="width: 300px; height: 200px; border: 1px solid black; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 30px;">
+                <div style="margin-bottom: 10px;">
+                    <label for="class_name">Class Name:</label>
+                    <input type="text" id="class_name" name="class_name">
                 </div>
-              </div>
+                <button id="load_sociogram">Load Sociogram</button>
             </div>
-          </div>
+            <div id="sociogram-container" style="display: none; margin-top: 30px;">
+                <div style="display: flex; justify-content: center;">
+                    <div style="display: flex; align-items: center;">
+                        <img id="sociogram-image" class="sociogram-image">
+                        <div class="color-indications-container">
+                            <div id="color-indications" style="display: flex; flex-direction: column;">
+                                <p><span class="color-indication" style="background-color: #3CB371;"></span> <span style="margin-left: 5px;">Works well with each other</span></p>
+                                <p><span class="color-indication" style="background-color: #5CACEE;"></span> <span style="margin-left: 5px;">Works well with one side</span></p>
+                                <p><span class="color-indication" style="background-color: #FF8C00;"></span> <span style="margin-left: 5px;">Does not work well with one side</span></p>
+                                <p><span class="color-indication" style="background-color: #836FFF;"></span> <span style="margin-left: 5px;">Does not work well with each other</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="form-container" style="width: 300px; height: 200px; border: 1px solid black; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-          <div style="margin-bottom: 10px;">
-            <label for="class_name">Class Name:</label>
-            <input type="text" id="class_name" name="class_name">
-          </div>
-          <button id="load_sociogram">Load Sociogram</button>
-        </div>
-      </div>
-      <style>
-         .sociogram-image {
-            max-width: 60%;
-            height: auto;
+        <style>
+            body {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+        
+            .page-wrapper {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              min-height: 100vh;
+            }
+            #main-container {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+            }
+            .sociogram-image {
+                max-width: 50%;
+                height: auto;
+            }
+          
+            .color-indications-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f0f0f0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 10px;
+                margin-left: 15px;
+                max-width: 100%;
+            }
+        
+            .color-indication {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+              
+            @media screen and (max-width: 768px) {
+             .sociogram-image {
+               max-width: 70%;
+               height
+               height: auto;
+            }
+        
+            .color-indications-container {
+              max-width: 80%;
+              flex-direction: column;
+            }
           }
         
-          .color-indications-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            margin-left: 15px;
-            max-width: 100%;
-          }
-    
-          .color-indication {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-          }          
-          
-        @media screen and (max-width: 768px) {
-         .sociogram-image {
-           max-width: 80%;
-           height: auto;
-         }
-     
-         .color-indications-container {
-           max-width: 80%;
-           flex-direction: column;
-         }
-       }
-     
-       @media screen and (max-width: 480px) {
-         .sociogram-image {
-           max-width: 90%;
-           height: auto;
-         }
-     
-         .color-indications-container {
-           max-width: 90%;
-           flex-direction: column;
-         }
-         @media screen and (max-width: 768px) {
-            .color-indication {
-              width: 8px;
-              height: 8px;
-            }
-          }
-          
           @media screen and (max-width: 480px) {
-            .color-indication {
-              width: 6px;
-              height: 6px;
+            .sociogram-image {
+              max-width: 90%;
+              height: auto;
             }
-          }
-          
-       }
-      </style>
-      <script>
-        $(document).ready(function() {
-          var buttonClicked = false;
-          $('#load_sociogram').on('click', function() {
-            var className = $('#class_name').val();
-            console.log('Class Name:', className);
-            if (className) {
-              $.ajax ({
-               url: '/sociogram-image',
-               type: 'GET',
-               data: {
-                 class: className
-               },
-               success: function(result) {
-                 console.log('Sociogram result:', result);
-                 $('#sociogram-image').attr('src', 'data:image/png;base64,' + result);
-                 $('#color-indications').show();
-                 $('#sociogram-container').show();
-                  if (!buttonClicked) {
-                  var sociogramImageHeight = $('#sociogram-image').height();
-                  var colorIndicationsHeight = $('.color-indications-container').height();
-                  var formContainerTop = parseInt($('#sociogram-container').css('top'), 10) + sociogramImageHeight + colorIndicationsHeight + 20;
-                  $('#form-container').css('top', formContainerTop + 'px');
-                  buttonClicked = true;
-                  }
-               },
-               error: function(xhr, status, error) {
-                 console.error('Error fetching sociogram:', error);
+        
+            .color-indications-container {
+              max-width: 90%;
+              flex-direction: column;
+            }
+            @media screen and (max-width: 768px) {
+               .color-indication {
+                 width: 8px;
+                 height: 8px;
                }
-             });
-           } else {
-             $('#sociogram-container').hide();
-             $('#color-indications').hide();
-           }
-         });
-       });
-   </script>
-    
-    
-</body>
-               
+             }
+             
+             @media screen and (max-width: 480px) {
+               .color-indication {
+                 width: 6px;
+                 height: 6px;
+               }
+             }
+             
+          }
+         </style>
+         <script>
+           $(document).ready(function() {
+               $('#load_sociogram').on('click', function() {
+                   var className = $('#class_name').val();
+                   console.log('Class Name:', className);
+                   if (className) {
+                       $.ajax({
+                           url: '/sociogram-image',
+                           type: 'GET',
+                           data: {
+                               class: className
+                           },
+                           success: function(result) {
+                               console.log('Sociogram result:', result);
+                               $('#sociogram-image').attr('src', 'data:image/png;base64,' + result);
+                               $('#color-indications').show();
+                               $('#sociogram-container').show();
+                           },
+                           error: function(xhr, status, error) {
+                               console.error('Error fetching sociogram:', error);
+                           }
+                       });
+                   } else {
+                       $('#sociogram-container').hide();
+                       $('#color-indications').hide();
+                   }
+               });
+           });
+       </script>
+<!-- Javascript files-->
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery-3.0.0.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/plugin.js') }}"></script>
+<!-- sidebar -->
+<script src="{{ url_for('static', filename='js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+<!-- javascript --> 
+<script src="{{ url_for('static', filename='js/owl.carousel.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-   
- 
- 
-          
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+              
+         $(".zoom").hover(function(){
+              
+         $(this).addClass('transition');
+         }, function(){
+              
+         $(this).removeClass('transition');
+         });
+         });
+      </script> 
+      <script>
+         function openNav() {
+         document.getElementById("myNav").style.width = "100%";
+         }
+         function closeNav() {
+         document.getElementById("myNav").style.width = "0%";
+         }
+      </script>  
+   </body>
 </html>
+       

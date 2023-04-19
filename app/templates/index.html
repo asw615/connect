@@ -70,7 +70,7 @@
                      </div>
                   </div>
                   <div class="col-md-6">
-                     <div class="banner_img"><img src="{{ url_for('static', filename='images/banner_img2.png') }}"></div>
+                     <div class="banner_img"><img src="{{ url_for('static', filename='images/sociogram02.png') }}"></div>
                   </div>
                </div>
             </div>
@@ -79,7 +79,7 @@
                   <div class="col-md-6">
                      <div class="container">
                         <h1 class="banner_taital">Tailoring Teaching Methods</h1>
-                        <p class="banner_text">Sociograms can help educators identify students' learning preferences and styles, enabling them to tailor their teaching methods and materials to better engage and support their students.</p>
+                        <p class="banner_text"> Social relations influence the well-being and academic performances in a classroom. Connected offers a tool for mapping these social relations to aid teachers in creating the best and most inclusive social environment - thereby paving the way for happier students and better academic performances. </p>
                         <div class="more_bt"><a href="#">Read More</a></div>
                      </div>
                   </div>
@@ -107,22 +107,23 @@
             <div class="row">
                <div class="col-sm-12">
                  <h1 class="protect_taital">Maximizing Collaboration through Sociograms</h1>
-                 <p class="protect_text">Sociograms are a powerful tool that can help educators and students alike understand the social dynamics in their classroom. By visualizing and analyzing the relationships between individuals, sociograms enable individuals to identify the different ways in which they learn and collaborate with others. This insight can help educators tailor their teaching methods and materials to better suit the diverse learning styles and preferences of their students, leading to more effective collaboration and better outcomes.</p>
+                 <p class="protect_text">The problem we are trying to solve is the lack of useful tools for teachers regarding students’ social well-being. Studies have shown a positive correlation between social well-being and academic performance, suggesting that when students feel good socially they often tend to perform better in school. Danish elementary schools currently evaluate students´ well-being with an annual national questionnaire, which we think is a deficient way of measuring well-being because this will have to be repeated more than once a year, in order to create a realistic picture/insight, because well-being is difficult to measure and not static. The motivation for our project is to create a bigger focus on the importance of students´ well-being and at the same time make it less time consuming and more manageable for teachers to get an overview over different classes and relations among students to improve students' social well-being and strengthen social relations in class in order to create a healthy environment. 
+               </p>
                </div>
              </div>
              <div class="protect_section layout_padding">
                <div class="container">
                   <div class="row">
                      <div class="col-sm-12">
-                       <h1 class="protect_taital">The different ways of learning</h1>
+                       <h1 class="protect_taital">Why use connected?</h1>
                      </div>
                    </div>                          
             <div class="protect_section_2 layout_padding">
                <div class="row">
                   <div class="col-md-6">
-                     <h1 class="hands_text"><a href="#">Visual: <br>Prefer visual aids</a></h1>
-                     <h1 class="hands_text_2"><a href="#">Auditory: <br>prefer listening</a></h1>
-                     <h1 class="hands_text"><a href="#">Kinesthetic:<br>prefer haptic</a></h1>
+                     <h1 class="hands_text"><a href="#">Social dynamics: <br>Get a unique overview of your classroom</a></h1>
+                     <h1 class="hands_text_2"><a href="#">Information: <br>Easy overview of large amounts of data</a></h1>
+                     <h1 class="hands_text"><a href="#">Environment:<br>By improving students' environment you can enhance social- and academic well-being</a></h1>
                   </div>
                   <div class="col-md-6">
                      <div class="image_2"><img src="{{ url_for('static', filename='images/info.png') }}"></div>
@@ -135,17 +136,24 @@
       <!-- about section start -->
       <div class="about_section layout_padding">
          <div class="container">
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="about_img"><img src="{{ url_for('static', filename='images/test.png') }}"></div>
+           <div class="row">
+             <div class="col-md-6">
+               <div class="about_img">
+                 <img src="{{ url_for('static', filename='images/test.png') }}">
                </div>
-               <div class="col-md-6">
-                  <h1 class="about_taital">Create your own sociogram?</span></h1>
-                  <div class="read_bt"><a href="{{ url_for('test_bp.test') }}">Take the test</a></div>
-               </div>
-            </div>
+             </div>
+             <div class="col-md-6">
+               <div class="content_box"> <!-- Add this div -->
+                 <h1 class="about_taital">Access questionnaire:<br></h1>
+                 <div class="read_bt">
+                   <a href="{{ url_for('test_bp.test') }}">Questionnaire</a>
+                 </div>
+               </div> <!-- End of the added div -->
+             </div>
+           </div>
          </div>
-      </div>
+       </div>
+       
       <!-- about section end -->
 
       <!-- copyright section start -->
