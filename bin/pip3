@@ -1,4 +1,4 @@
-#!/Users/sorenmeiner/Desktop/flask_connected/connected/bin/python
+#!/Users/sorenmeiner/Desktop/connected/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
