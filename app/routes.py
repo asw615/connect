@@ -41,6 +41,9 @@ def logout():
 def is_logged_in():
     return 'logged_in' in session and session['logged_in']
 
+@test_bp.route('/')
+def root():
+    return redirect(url_for('test_bp.index'))
 
 # normal pages section
 
