@@ -23,6 +23,12 @@ template = """
       margin: 30px 0;
       font-size: 36px;
     }
+    
+    h2 {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 16px;
+    }
 
     form {
       max-width: 600px;
@@ -76,6 +82,7 @@ template = """
 </head>
 <body>
     <h1>Please answer the questions</h1>
+    <h2>When asked to name persons, use first names, separated by a comma e.g. Søren, Laura, Liv, Freya</h2>
     <form method="POST" action="">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
@@ -87,10 +94,25 @@ template = """
             <option value="Female">Female</option>
             <option value="Other">Other</option>
         </select>
-        <label for="work_well">Who do you work well with? (first names, separated by a comma e.g. Søren, Laura, Liv, Freya)</label>
+        <label for="social_well_being">How well do you feel socially (from 1-5 where 1 is not so good 5 is great)</label>
+        <select id="social_well_being" name="social_well_being" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        <label for="work_well">Who do you work well with in group projects? </label>
         <input type="text" id="work_well" name="work_well" required>
-        <label for="not_work_well">Who do you not work well with? (first names, seperated by a comma e.g. Søren, Laura, Liv, Freya)</label>
+        <label for="not_work_well">Are there any classmates you struggle to work with in group projects?</label>
         <input type="text" id="not_work_well" name="not_work_well" required>
+        <label for="work_more_with">Is there anyone in class, you would like to work more with on a group project? </label>
+        <input type="text" id="work_more_with" name="work_more_with" required>
+        <label for="enjoy_talking_to">Who do you most enjoy talking with in class? </label>
+        <input type="text" id="enjoy_talking_to" name="enjoy_talking_to" required>
+        <label for="difficult_talking_to">Is there anyone in class you find it difficult to talk with? </label>
+        <input type="text" id="difficult_talking_to" name="difficult_talking_to" required>
+        <label for="get_to_know_better">Is there anyone in class you would like to get to know better? </label>
+        <input type="text" id="get_to_know_better" name="get_to_know_better" required>
         <input type="submit" name="submit" value="Submit">
     </form>
 </body>
@@ -105,8 +127,13 @@ def survey_form():
         name = request.form["name"]
         class_ = request.form["class"]
         gender = request.form["gender"]
+        social_well_being = request.form["social_well_being"]
         work_well = request.form["work_well"]
         not_work_well = request.form["not_work_well"]
+        work_more_with = request.form["work_more_with"]
+        enjoy_talking_to = request.form["enjoy_talking_to"]
+        difficult_talking_to = request.form["difficult_talking_to"]
+        get_to_know_better = request.form["get_to_know_better"]
 
         # Read the CSV file
         with open(csv_file, mode="r", newline="") as csvfile:
@@ -118,13 +145,18 @@ def survey_form():
             "name": name,
             "class": class_,
             "gender": gender,
+            "social_well_being": social_well_being,
             "work_well": work_well,
             "not_work_well": not_work_well,
+            "work_more_with": work_more_with,
+            "enjoy_talking_to": enjoy_talking_to,
+            "difficult_talking_to": difficult_talking_to,
+            "get_to_know_better": get_to_know_better,
         })
 
         # Write the new data to the CSV file
         with open(csv_file, mode="w", newline="") as csvfile:
-            fieldnames = ["name", "class", "gender", "work_well", "not_work_well"]
+            fieldnames = ["name", "class", "gender", "social_well_being", "work_well", "not_work_well", "work_more_with", "enjoy_talking_to", "difficult_talking_to", "get_to_know_better"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(records)

@@ -1,17 +1,19 @@
-name,class,gender,work_well,not_work_well
-Søren,2a,Male,"Laura, Liv",Freya
-Alice,1a,Female,"Bob, Cindy, Ethan","Frank, Grace, Hannah"
-Bob,1a,Other,"Alice, Cindy, David","Grace, Hannah, Ethan"
-Cindy,1a,Female,"Alice, Bob, David","Ethan, Frank, Grace"
-David,1a,Male,"Bob, Cindy, Ethan","Grace, Hannah, Frank"
-Ethan,1a,Male,"Alice, Cindy, Hannah","Frank, Grace"
-Frank,1a,Male,"Alice, David, Hannah","Cindy, Ethan, Grace"
-Grace,1a,Female,"Bob, David, Frank","Alice, Cindy, Hannah"
-Hannah,1a,Female,"Alice, Ethan, Frank","Bob, Cindy, Grace"
-Isaac,1a,Male,"Cindy, Ethan, Grace","Alice, David, Frank"
-Jake,1a,Male,"Alice, Bob, David","Cindy, Ethan, Grace"
-Liv,2a,Female,Freya,Søren
-Freya,2a,Female,"Liv, Laura",Søren
-yolo ,3a,Other,fuck,shit
-fuck,3a,Other,yolo,shit
-søren,4a,Male,"Liv, Freya",Laura
+name,class,gender,social_well_being,work_well,not_work_well,work_more_with,enjoy_talking_to,difficult_talking_to,get_to_know_better
+Søren,2a,Male,,"Laura, Liv",Freya,,,,
+Alice,1a,Female,,"Bob, Cindy, Ethan","Frank, Grace, Hannah",,,,
+Bob,1a,Other,,"Alice, Cindy, David","Grace, Hannah, Ethan",,,,
+Cindy,1a,Female,,"Alice, Bob, David","Ethan, Frank, Grace",,,,
+David,1a,Male,,"Bob, Cindy, Ethan","Grace, Hannah, Frank",,,,
+Ethan,1a,Male,,"Alice, Cindy, Hannah","Frank, Grace",,,,
+Frank,1a,Male,,"Alice, David, Hannah","Cindy, Ethan, Grace",,,,
+Grace,1a,Female,,"Bob, David, Frank","Alice, Cindy, Hannah",,,,
+Hannah,1a,Female,,"Alice, Ethan, Frank","Bob, Cindy, Grace",,,,
+Isaac,1a,Male,,"Cindy, Ethan, Grace","Alice, David, Frank",,,,
+Jake,1a,Male,,"Alice, Bob, David","Cindy, Ethan, Grace",,,,
+Liv,2a,Female,,Freya,Søren,,,,
+Freya,2a,Female,,"Liv, Laura",Søren,,,,
+yolo ,3a,Other,,fuck,shit,,,,
+fuck,3a,Other,,yolo,shit,,,,
+søren,4a,Male,,"Liv, Freya",Laura,,,,
+safgr,adrgbfv,Male,,adrg,hsdbvc,erag,adrg,rg,asd
+xzcbdfg,dfgg,Male,5,adfgda,eardbfcv,dfczxv,fdbc,dzbc,df
