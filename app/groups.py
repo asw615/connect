@@ -1,79 +1,96 @@
 import pandas as pd
-import networkx as nx
-import itertools
-import matplotlib.pyplot as plt
 import numpy as np
+import networkx as nx
+from networkx.algorithms import community
 
-# Read data from CSV
-df = pd.read_csv('app/groups.csv')
+# read CSV file into pandas DataFrame
+df = pd.read_csv('/Users/sorenmeiner/Desktop/connected/app/static/data/survey.csv')
 
-# Create graph
-G = nx.Graph()
+# Get unique classes
+classes = df['class'].unique()
 
-# Add nodes
-for index, row in df.iterrows():
-    G.add_node(row['name'])
-
-# Add edges with attributes
-for index, row in df.iterrows():
-    name = row['name']
-    work_well = row['work_well'].strip('"').split()
-    not_work_well = row['not_work_well'].strip('"').split()
+for class_name in classes:
+    class_df = df[df['class'] == class_name]
     
-    for w in work_well:
-        G.add_edge(name, w, type='work_well')
-    for nw in not_work_well:
-        G.add_edge(name, nw, type='not_work_well')
+    # get list of all unique names in the class
+    names = class_df['name'].unique()
+    n = len(names)
 
-# Group formation function
-def form_groups(G, group_size=4):
-    def form_group_recursively(node, group, remaining_nodes):
-        if len(group) == group_size:
-            return group
-        
-        for neighbor in G.neighbors(node):
-            if neighbor in remaining_nodes:
-                new_group = group + [neighbor]
-                new_remaining_nodes = remaining_nodes - {neighbor}
-                result = form_group_recursively(neighbor, new_group, new_remaining_nodes)
-                if result:
-                    return result
-        return None
+    # initialize n x n matrix with zeros
+    matrix = np.zeros((n, n))
 
+    def get_set_of_names(name_list):
+        if pd.isna(name_list):
+            return set()
+        return set(name_list.split(', '))
+
+    # iterate over rows and fill in matrix
+    for i, name_i in enumerate(names):
+        for j, name_j in enumerate(names[i+1:], start=i+1):
+            work_well_i = get_set_of_names(class_df.loc[class_df['name'] == name_i, 'work_well'].values[0])
+            not_work_well_i = get_set_of_names(class_df.loc[class_df['name'] == name_i, 'not_work_well'].values[0])
+            work_more_with_i = get_set_of_names(class_df.loc[class_df['name'] == name_i, 'work_more_with'].values[0])
+
+            work_well_j = get_set_of_names(class_df.loc[class_df['name'] == name_j, 'work_well'].values[0])
+            not_work_well_j = get_set_of_names(class_df.loc[class_df['name'] == name_j, 'not_work_well'].values[0])
+            work_more_with_j = get_set_of_names(class_df.loc[class_df['name'] == name_j, 'work_more_with'].values[0])
+
+            if name_i in not_work_well_j or name_j in not_work_well_i:
+                matrix[i, j] = -1
+                matrix[j, i] = -1
+            elif name_i in work_well_j and name_j in work_well_i:  # if mutual work well
+                matrix[i, j] = 2
+                matrix[j, i] = 2
+            elif name_i in work_well_j or name_j in work_well_i:  # if one-sided work well
+                matrix[i, j] = 1
+                matrix[j, i] = 1
+            elif name_i in work_more_with_j or name_j in work_more_with_i:  # if one wants to work more with the other
+                matrix[i, j] = 2
+                matrix[j, i] = 2
+
+        # create graph from matrix
+    G = nx.from_numpy_array(matrix)
+
+    # Calculate the total weight of edges
+    m = G.size(weight='weight')
+
+    # If total weight is zero, create a single community with all individuals
+    if m == 0:
+        communities = [frozenset(range(n))]
+    else:
+        # perform modularity optimization
+        communities = community.greedy_modularity_communities(G, weight='weight')
+
+
+    # sort communities by size
+    communities = sorted(communities, key=len, reverse=True)
+
+    # create groups of specified size
+    group_size = 4
     groups = []
-    nodes = set(G.nodes())
+    current_group = []
+    for community in communities:
+        for name in community:
+            current_group.append(name)
+            if len(current_group) == group_size:
+                groups.append(current_group)
+                current_group = []
 
-    while nodes:
-        node = nodes.pop()
-        group = form_group_recursively(node, [node], nodes)
-        if group:
-            groups.append(group)
-            nodes = nodes - set(group)
+        if current_group:
+            while len(current_group) < group_size and groups:
+                current_group.append(groups[-1].pop())
+                if not groups[-1]:
+                    groups.pop()
+            if current_group:
+                groups.append(current_group)
+# print groups
+names = names.tolist()
+print(f"\nClass: {class_name}")
+for i, group in enumerate(groups):
+    group_names = [names[index] for index in group]
+    print(f"Group {i+1}: {', '.join(sorted(group_names))}")
 
-    return groups
+# handle any leftover individuals
+if current_group:
+    print(f"Leftover: {', '.join(sorted([names[index] for index in current_group]))}")
 
-groups = form_groups(G)
-
-# Print groups
-for i, group in enumerate(groups, start=1):
-    print(f"Group {i}: {', '.join(group)}")
-
-# Visualization
-pos = nx.spring_layout(G, seed=42)
-node_colors = []
-
-color_map = plt.cm.get_cmap('viridis', len(groups) + 1)
-
-for node in G.nodes:
-    found = False
-    for i, group in enumerate(groups):
-        if node in group:
-            node_colors.append(color_map(i))
-            found = True
-            break
-    if not found:
-        node_colors.append(color_map(len(groups)))  # Assign a color to nodes not in any group
-
-edge_colors = ['green' if G.edges[e]['type'] == 'work_well' else 'red' for e in G.edges]
-nx.draw(G, pos, with_labels=True, node_color=node_colors, font_size=8, node_size=1000, edge_color=edge_colors)
-plt.show()

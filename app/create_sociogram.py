@@ -1,6 +1,7 @@
 import igraph as ig
 import csv
 
+
 def create_sociogram(class_name):
     with open('app/static/data/survey.csv', newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
@@ -9,7 +10,7 @@ def create_sociogram(class_name):
     G = ig.Graph()
 
     for row in rows:
-        G.add_vertex(row['name'])
+        G.add_vertex(row['name'], social_well_being=int(row['social_well_being']))
 
     node_names = G.vs["name"]
 
@@ -63,10 +64,18 @@ def create_sociogram(class_name):
         elif edge["color"] == "slateblue1":
             edge_widths[e] = 3
 
+        # Function to map social_well_being values to colors in a gradient scale
+    def social_well_being_to_color(value):
+        colors = ["dimgrey", "grey", "slategrey", "lightsteelblue", "steelblue"]
+        return colors[value - 1]
+
+    # Generate vertex colors based on social_well_being values
+    vertex_colors = [social_well_being_to_color(v["social_well_being"]) for v in G.vs]
+
     # Visualize the graph
     visual_style = {}
     visual_style["vertex_size"] = 70
-    visual_style["vertex_color"] = "lightblue"
+    visual_style["vertex_color"] = vertex_colors
     visual_style["vertex_label"] = G.vs["name"]
     visual_style["edge_color"] = G.es["color"]
     visual_style["layout"] = G.layout_fruchterman_reingold()
