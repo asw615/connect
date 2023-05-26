@@ -29,7 +29,7 @@
                         <div class="togle_">
                             <div class="menu_main">
                                 <ul>
-                                    <li><a href="{{ url_for('test_bp.login') }}">Login</a></li>
+                                    <li><a href="{{ url_for('test_bp.login', next=request.path) }}">Login</a>
                                     <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
@@ -37,11 +37,12 @@
                         <div id="myNav" class="overlay">
                             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                             <div class="overlay-content">
-                                <a href="{{ url_for('test_bp.index') }}">Home</a>
-                                <a href="{{ url_for('test_bp.test') }}">Take the test</a>
-                                <a href="{{ url_for('test_bp.sociogram') }}">Show test results</a>
-                                <a href="{{ url_for('test_bp.science') }}">How do we assess learning profiles?</a>
-                                <a href="{{ url_for('test_bp.about') }}">About us</a>
+                              <a href="{{ url_for('test_bp.index') }}">Home</a>
+                              <a href="{{ url_for('test_bp.test') }}">Answer questionnaire</a>
+                              <a href="{{ url_for('test_bp.guide') }}">Practical Guide</a>
+                              <a href="{{ url_for('test_bp.sociogram') }}">Show test results</a>
+                              <a href="{{ url_for('test_bp.science') }}">Data ethics</a>
+                              <a href="{{ url_for('test_bp.about') }}">About us</a>
                             </div>
                         </div>
                         <span class="navbar-toggler-icon"></span>
@@ -51,14 +52,6 @@
                 </div>
             </div>
         </div>
-    </div>
-            <!-- banner section start -->
-            <div class="container">
-               <div class="about_taital_main">
-                  <h2 class="about_tag">This is here you take your test</h2>
-               </div>
-            </div>
-         <!-- banner section end -->
       </div>
       <!-- header section end -->
       <!-- protect section start -->
@@ -66,12 +59,33 @@
          <div class="container">
             <div class="row">
                <div class="col-sm-12">
-                  <h1 class="protect_taital">TEST SHOULD BE HERE</h1>
-                  <p class="protect_text">English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for</p>
+                  <h1 class="protect_taital_1">Practical guide for using the website</h1>
+                  <p class="lorem_text">
+                     The purpose of this website is to help teachers gain an overview of the social relationships within their classes. By having each student complete a questionnaire, their responses can be connected to create a sociogram that visualizes the social dynamics of the classroom. It is important to note that while the website can be a helpful tool in this process, it should be used as a supplement to, not a replacement for, face-to-face conversations with students about their wellbeing.
+                  </p>
+                  <p class="lorem_text">
+                     It's crucial that teachers prioritize the wellbeing of their students and continue to take the time to talk with them individually and as a group. The sociogram can provide valuable insights into the social dynamics of the classroom and help teachers identify areas that may need attention. By using the website, teachers can streamline the process of creating a sociogram and use the information gathered to inform their teaching strategies and classroom management techniques. However, it's important to remember that the sociogram should be used in conjunction with other forms of communication and not be relied upon as the sole source of information about students' social and emotional wellbeing.
+                  </p>
+                  <h1 class="protect_taital_1">The teacher’s steps for creating a sociogram are:</h1>
+                  </p>
+                  <ol class="lorem_text">
+                     <li>1. Create a profile</li>
+                     <li>2. Send a link to the students</li>
+                     <li>3. The students will fill out the questionnaire</li>
+                     <li>4. Choose the class you want a sociogram of</li>
+                     <li>5. The sociogram is ready</li>
+                  </ol>
+                  <h1 class="protect_taital_1">It is possible to see the standard sociogram, but there are also possibilities to expand the sociogram and add other questionnaire answers in relation to the sociogram. You can choose to:</h1>
+                  </p>
+                  <ul class="lorem_text">
+                     <li>Click on the question you want to see the students’ answers for. A grading color scale will appear, and the nodes of the students will be colored according to their answers.</li>
+                     <li>Click on a specific student to see their answer and their reason for placing themselves at this point on the scale.</li>
+                  </ul>
                </div>
             </div>
          </div>
       </div>
+      
       <!-- protect section end -->
    
       <!-- copyright section start -->

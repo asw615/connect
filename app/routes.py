@@ -27,10 +27,16 @@ def login():
         if check_credentials(username, password):
             session['logged_in'] = True
             flash('You are now logged in', 'success')
-            return redirect(url_for('test_bp.sociogram'))
+
+            next_page = request.args.get('next')  # Get the value of 'next' parameter
+            if next_page:
+                return redirect(next_page)
+            else:
+                return redirect(url_for('test_bp.sociogram'))
         else:
             flash('Invalid credentials', 'danger')
     return render_template('login.html', user=is_logged_in())
+
 
 @test_bp.route('/logout')
 def logout():
@@ -64,6 +70,12 @@ def sociogram():
     if 'logged_in' not in session or not session['logged_in']:
         return redirect(url_for('test_bp.login'))
     return render_template('sociogram.html', user=is_logged_in())
+
+@test_bp.route('/guide')
+def guide():
+    if 'logged_in' not in session or not session['logged_in']:
+        return redirect(url_for('test_bp.login'))
+    return render_template('guide.html', user=is_logged_in())
 
 @test_bp.route('/test')
 def test():

@@ -478,6 +478,14 @@ menu_text {
     font-weight: bold;
     text-align: center;
 }
+.protect_taital_1{
+    width: 100%;
+    float: left;
+    font-size: 32px;
+    color: #081419;
+    font-weight: bold;
+    text-align: left;
+}
 
 .protect_text {
     width: 80%;
@@ -485,6 +493,13 @@ menu_text {
     font-size: 16px;
     color: #081419;
     text-align: center;
+}
+.protect_text_1 {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #081419;
+    text-align: left;
 }
 
 .protect_section_2{
@@ -669,7 +684,7 @@ menu_text {
     width: 50%;
     float: left;
     font-size: 14px;
-    color: #fefefd;
+    color: #000000;
     margin: 0px;
 }
 
@@ -793,7 +808,7 @@ menu_text {
     width: 100%;
     font-size: 16px;
     color: #081419;
-    text-align: center;
+    text-align: left;
     margin: 0 auto;
 }
 

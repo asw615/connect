@@ -41,11 +41,12 @@
                         <div id="myNav" class="overlay">
                             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                             <div class="overlay-content">
-                                <a href="{{ url_for('test_bp.index') }}">Home</a>
-                                <a href="{{ url_for('test_bp.test') }}">Answer questionnaire</a>
-                                <a href="{{ url_for('test_bp.sociogram') }}">Show test results</a>
-                                <a href="{{ url_for('test_bp.science') }}">Data ethics</a>
-                                <a href="{{ url_for('test_bp.about') }}">About us</a>
+                              <a href="{{ url_for('test_bp.index') }}">Home</a>
+                              <a href="{{ url_for('test_bp.test') }}">Answer questionnaire</a>
+                              <a href="{{ url_for('test_bp.guide') }}">Practical Guide</a>
+                              <a href="{{ url_for('test_bp.sociogram') }}">Show test results</a>
+                              <a href="{{ url_for('test_bp.science') }}">Data ethics</a>
+                              <a href="{{ url_for('test_bp.about') }}">About us</a>
                             </div>
                         </div>
                         <span class="navbar-toggler-icon"></span>
@@ -79,7 +80,8 @@
       <div class="col-sm-12">
         <div class="survey-container" style="text-align: center; max-width: 600px; margin: auto; background-color: #F0F8FF; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);">
           <h2 style="font-size: 24px; margin-bottom: 20px;">Answer the Questionnaire</h2>
-          <p style="font-size: 18px; margin-bottom: 30px;">Click the button below to start the questionnaire and help your teacher gain insights into your classroom's social dynamics.</p>
+          <p style="font-size: 18px; margin-bottom: 30px;">You will be presented with a range of questions regarding your well-being in school. Questions will focus on your social relations, learning experiences, motivation and group work. The purpose is to gain an insight of your class environment regarding the social dynamics in order to enhance everyone's well-being.  
+          </p>
           <button class="survey-button" id="surveyButton">Answer questionnaire</button>
            <style>
              .blur {
